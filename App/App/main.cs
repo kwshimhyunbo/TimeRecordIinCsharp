@@ -21,5 +21,16 @@ namespace App
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            admin app = new admin();
+            app.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
