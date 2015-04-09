@@ -74,7 +74,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Gulim", 15F);
+            this.textBox1.Font = new System.Drawing.Font("굴림", 15F);
             this.textBox1.Location = new System.Drawing.Point(189, 399);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(221, 30);
@@ -83,7 +83,7 @@
             // workerName
             // 
             this.workerName.AutoSize = true;
-            this.workerName.Font = new System.Drawing.Font("Gulim", 15F);
+            this.workerName.Font = new System.Drawing.Font("굴림", 15F);
             this.workerName.Location = new System.Drawing.Point(80, 402);
             this.workerName.Name = "workerName";
             this.workerName.Size = new System.Drawing.Size(56, 20);
@@ -92,7 +92,7 @@
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Gulim", 15F);
+            this.button4.Font = new System.Drawing.Font("굴림", 15F);
             this.button4.Location = new System.Drawing.Point(457, 399);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 27);
@@ -138,17 +138,20 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::App.Properties.Resources.one;
-            this.pictureBox1.Location = new System.Drawing.Point(62, 9);
+            this.pictureBox1.BackgroundImage = global::App.Properties.Resources.one1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(84, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(482, 341);
+            this.pictureBox1.Size = new System.Drawing.Size(473, 315);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(673, 543);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.checkBox3);

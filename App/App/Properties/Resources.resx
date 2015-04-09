@@ -121,4 +121,10 @@
   <data name="one" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\one.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="one1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\one1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="one2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\one.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
