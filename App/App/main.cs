@@ -19,7 +19,7 @@ namespace App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;//사진의 크기를 딱 맞는 크기로 줄여준다.
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -75,7 +75,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Gulim", 15F);
-            this.textBox1.Location = new System.Drawing.Point(120, 167);
+            this.textBox1.Location = new System.Drawing.Point(189, 399);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(221, 30);
             this.textBox1.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             this.workerName.AutoSize = true;
             this.workerName.Font = new System.Drawing.Font("Gulim", 15F);
-            this.workerName.Location = new System.Drawing.Point(58, 170);
+            this.workerName.Location = new System.Drawing.Point(80, 402);
             this.workerName.Name = "workerName";
             this.workerName.Size = new System.Drawing.Size(56, 20);
             this.workerName.TabIndex = 4;
@@ -93,7 +93,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Gulim", 15F);
-            this.button4.Location = new System.Drawing.Point(379, 170);
+            this.button4.Location = new System.Drawing.Point(457, 399);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 27);
             this.button4.TabIndex = 5;
@@ -103,7 +103,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(62, 234);
+            this.checkBox1.Location = new System.Drawing.Point(88, 465);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(48, 16);
             this.checkBox1.TabIndex = 6;
@@ -113,7 +113,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(215, 234);
+            this.checkBox2.Location = new System.Drawing.Point(282, 465);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(48, 16);
             this.checkBox2.TabIndex = 7;
@@ -123,7 +123,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(379, 234);
+            this.checkBox3.Location = new System.Drawing.Point(457, 465);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(72, 16);
             this.checkBox3.TabIndex = 8;
@@ -138,9 +138,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(62, 15);
+            this.pictureBox1.Image = global::App.Properties.Resources.one;
+            this.pictureBox1.Location = new System.Drawing.Point(62, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(404, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(482, 341);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
@@ -148,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 280);
+            this.ClientSize = new System.Drawing.Size(673, 543);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
