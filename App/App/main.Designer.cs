@@ -32,14 +32,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.empNum = new System.Windows.Forms.TextBox();
             this.workerName = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.MainOk = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioGo = new System.Windows.Forms.RadioButton();
+            this.radioBack = new System.Windows.Forms.RadioButton();
+            this.radioLate = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,13 +72,13 @@
             this.button3.Text = "확인창";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // empNum
             // 
-            this.textBox1.Font = new System.Drawing.Font("Gulim", 15F);
-            this.textBox1.Location = new System.Drawing.Point(189, 399);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 30);
-            this.textBox1.TabIndex = 3;
+            this.empNum.Font = new System.Drawing.Font("Gulim", 15F);
+            this.empNum.Location = new System.Drawing.Point(189, 399);
+            this.empNum.Name = "empNum";
+            this.empNum.Size = new System.Drawing.Size(221, 30);
+            this.empNum.TabIndex = 3;
             // 
             // workerName
             // 
@@ -90,15 +90,16 @@
             this.workerName.TabIndex = 4;
             this.workerName.Text = "사원번호 :";
             // 
-            // button4
+            // MainOk
             // 
-            this.button4.Font = new System.Drawing.Font("Gulim", 15F);
-            this.button4.Location = new System.Drawing.Point(457, 399);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 27);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "확인";
-            this.button4.UseVisualStyleBackColor = true;
+            this.MainOk.Font = new System.Drawing.Font("Gulim", 15F);
+            this.MainOk.Location = new System.Drawing.Point(457, 399);
+            this.MainOk.Name = "MainOk";
+            this.MainOk.Size = new System.Drawing.Size(87, 27);
+            this.MainOk.TabIndex = 5;
+            this.MainOk.Text = "확인";
+            this.MainOk.UseVisualStyleBackColor = true;
+            this.MainOk.Click += new System.EventHandler(this.MainOk_Click);
             // 
             // imageList1
             // 
@@ -117,38 +118,37 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // radioButton1
+            // radioGo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(84, 468);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "출근";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioGo.AutoSize = true;
+            this.radioGo.Checked = true;
+            this.radioGo.Location = new System.Drawing.Point(84, 468);
+            this.radioGo.Name = "radioGo";
+            this.radioGo.Size = new System.Drawing.Size(47, 16);
+            this.radioGo.TabIndex = 10;
+            this.radioGo.TabStop = true;
+            this.radioGo.Text = "출근";
+            this.radioGo.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioBack
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(265, 468);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "퇴근";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioBack.AutoSize = true;
+            this.radioBack.Location = new System.Drawing.Point(265, 468);
+            this.radioBack.Name = "radioBack";
+            this.radioBack.Size = new System.Drawing.Size(47, 16);
+            this.radioBack.TabIndex = 11;
+            this.radioBack.Text = "퇴근";
+            this.radioBack.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioLate
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(457, 468);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 16);
-            this.radioButton3.TabIndex = 12;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "잔업퇴근";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioLate.AutoSize = true;
+            this.radioLate.Location = new System.Drawing.Point(457, 468);
+            this.radioLate.Name = "radioLate";
+            this.radioLate.Size = new System.Drawing.Size(71, 16);
+            this.radioLate.TabIndex = 12;
+            this.radioLate.Text = "잔업퇴근";
+            this.radioLate.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -156,13 +156,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(673, 502);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioLate);
+            this.Controls.Add(this.radioBack);
+            this.Controls.Add(this.radioGo);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.MainOk);
             this.Controls.Add(this.workerName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.empNum);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -180,14 +180,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox empNum;
         private System.Windows.Forms.Label workerName;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button MainOk;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioGo;
+        private System.Windows.Forms.RadioButton radioBack;
+        private System.Windows.Forms.RadioButton radioLate;
     }
 }
 
