@@ -75,10 +75,11 @@
             // empNum
             // 
             this.empNum.Font = new System.Drawing.Font("Gulim", 15F);
-            this.empNum.Location = new System.Drawing.Point(189, 399);
+            this.empNum.Location = new System.Drawing.Point(189, 396);
             this.empNum.Name = "empNum";
             this.empNum.Size = new System.Drawing.Size(221, 30);
             this.empNum.TabIndex = 3;
+            this.empNum.TextChanged += new System.EventHandler(this.empNum_TextChanged);
             // 
             // workerName
             // 
