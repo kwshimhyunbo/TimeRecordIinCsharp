@@ -25,3 +25,13 @@ C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.Properties.Resources
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.exe
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.pdb
+C:\Users\s\Desktop\pr\App\App\bin\Debug\App.exe.config
+C:\Users\s\Desktop\pr\App\App\bin\Debug\App.exe
+C:\Users\s\Desktop\pr\App\App\bin\Debug\App.pdb
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.csprojResolveAssemblyReference.cache
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.Form1.resources
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.Properties.Resources.resources
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.csproj.GenerateResource.Cache
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.exe
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.pdb
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.관리자창.resources

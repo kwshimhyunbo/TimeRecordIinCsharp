@@ -32,14 +32,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.empNum = new System.Windows.Forms.TextBox();
             this.workerName = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.MainOk = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radioGo = new System.Windows.Forms.RadioButton();
+            this.radioBack = new System.Windows.Forms.RadioButton();
+            this.radioLate = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(575, 42);
+            this.button2.Location = new System.Drawing.Point(575, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(575, 71);
+            this.button3.Location = new System.Drawing.Point(575, 41);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
@@ -73,63 +73,35 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox1
+            // empNum
             // 
-            this.textBox1.Font = new System.Drawing.Font("굴림", 15F);
-            this.textBox1.Location = new System.Drawing.Point(189, 399);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 30);
-            this.textBox1.TabIndex = 3;
+            this.empNum.Font = new System.Drawing.Font("Gulim", 15F);
+            this.empNum.Location = new System.Drawing.Point(189, 396);
+            this.empNum.Name = "empNum";
+            this.empNum.Size = new System.Drawing.Size(221, 30);
+            this.empNum.TabIndex = 3;
+            this.empNum.TextChanged += new System.EventHandler(this.empNum_TextChanged);
             // 
             // workerName
             // 
             this.workerName.AutoSize = true;
-            this.workerName.Font = new System.Drawing.Font("굴림", 15F);
+            this.workerName.Font = new System.Drawing.Font("Gulim", 15F);
             this.workerName.Location = new System.Drawing.Point(80, 402);
             this.workerName.Name = "workerName";
-            this.workerName.Size = new System.Drawing.Size(56, 20);
+            this.workerName.Size = new System.Drawing.Size(103, 20);
             this.workerName.TabIndex = 4;
-            this.workerName.Text = "이름:";
+            this.workerName.Text = "사원번호 :";
             // 
-            // button4
+            // MainOk
             // 
-            this.button4.Font = new System.Drawing.Font("굴림", 15F);
-            this.button4.Location = new System.Drawing.Point(457, 399);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 27);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "확인";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(88, 465);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 16);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "출근";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(282, 465);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 16);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "퇴근";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(457, 465);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(72, 16);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "잔업퇴근";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.MainOk.Font = new System.Drawing.Font("Gulim", 15F);
+            this.MainOk.Location = new System.Drawing.Point(457, 399);
+            this.MainOk.Name = "MainOk";
+            this.MainOk.Size = new System.Drawing.Size(87, 27);
+            this.MainOk.TabIndex = 5;
+            this.MainOk.Text = "확인";
+            this.MainOk.UseVisualStyleBackColor = true;
+            this.MainOk.Click += new System.EventHandler(this.MainOk_Click);
             // 
             // imageList1
             // 
@@ -148,19 +120,51 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // radioGo
+            // 
+            this.radioGo.AutoSize = true;
+            this.radioGo.Checked = true;
+            this.radioGo.Location = new System.Drawing.Point(84, 468);
+            this.radioGo.Name = "radioGo";
+            this.radioGo.Size = new System.Drawing.Size(47, 16);
+            this.radioGo.TabIndex = 10;
+            this.radioGo.TabStop = true;
+            this.radioGo.Text = "출근";
+            this.radioGo.UseVisualStyleBackColor = true;
+            // 
+            // radioBack
+            // 
+            this.radioBack.AutoSize = true;
+            this.radioBack.Location = new System.Drawing.Point(265, 468);
+            this.radioBack.Name = "radioBack";
+            this.radioBack.Size = new System.Drawing.Size(47, 16);
+            this.radioBack.TabIndex = 11;
+            this.radioBack.Text = "퇴근";
+            this.radioBack.UseVisualStyleBackColor = true;
+            // 
+            // radioLate
+            // 
+            this.radioLate.AutoSize = true;
+            this.radioLate.Location = new System.Drawing.Point(457, 468);
+            this.radioLate.Name = "radioLate";
+            this.radioLate.Size = new System.Drawing.Size(71, 16);
+            this.radioLate.TabIndex = 12;
+            this.radioLate.Text = "잔업퇴근";
+            this.radioLate.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(673, 543);
+            this.ClientSize = new System.Drawing.Size(673, 502);
+            this.Controls.Add(this.radioLate);
+            this.Controls.Add(this.radioBack);
+            this.Controls.Add(this.radioGo);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.MainOk);
             this.Controls.Add(this.workerName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.empNum);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -178,14 +182,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox empNum;
         private System.Windows.Forms.Label workerName;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button MainOk;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton radioGo;
+        private System.Windows.Forms.RadioButton radioBack;
+        private System.Windows.Forms.RadioButton radioLate;
     }
 }
 

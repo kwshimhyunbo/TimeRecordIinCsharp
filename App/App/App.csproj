@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="admin.Designer.cs">
-      <DependentUpon>admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="confirm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="confirm.Designer.cs">
       <DependentUpon>confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="관리자창.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="관리자창.Designer.cs">
+      <DependentUpon>관리자창.cs</DependentUpon>
     </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
@@ -64,9 +66,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="admin.resx">
-      <DependentUpon>admin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +73,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="관리자창.resx">
+      <DependentUpon>관리자창.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
