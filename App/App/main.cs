@@ -40,9 +40,6 @@ namespace App
 
         }
 
-<<<<<<< HEAD
-        private void button3_Click(object sender, EventArgs e)
-=======
         private void MainOk_Click(object sender, EventArgs e)//확인 해서 db에 저장
         {
             if (checkEmployee())
@@ -249,7 +246,6 @@ namespace App
         }
 
         private void empNum_TextChanged(object sender, EventArgs e)
->>>>>>> 82d6a4941ea2c2eb1b46b6c967abf84aa000916f
         {
 
         }

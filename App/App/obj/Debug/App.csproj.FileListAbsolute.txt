@@ -7,7 +7,6 @@ C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.Properties.Resources.resou
 C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.exe
 C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.pdb
-C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.admin.resources
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.exe.config
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.exe
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.pdb
@@ -35,3 +34,4 @@ C:\Users\s\Desktop\pr\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\s\Desktop\pr\App\App\obj\Debug\App.exe
 C:\Users\s\Desktop\pr\App\App\obj\Debug\App.pdb
 C:\Users\s\Desktop\pr\App\App\obj\Debug\App.관리자창.resources
+C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.관리자창.resources
