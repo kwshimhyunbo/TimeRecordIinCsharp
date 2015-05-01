@@ -13,7 +13,7 @@ namespace App
 {
     public partial class Form1 : Form
     {
-        private static string strConn = "Server=localhost;Database=timecard;Uid=root;Pwd=Marine;";
+        private static string strConn = "Server=localhost;Database=workingrecord;Uid=root;Pwd=1234;";
 
         public Form1()
         {
@@ -27,8 +27,7 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            admin app = new admin();
-            app.Show();
+            new 관리자창().Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -43,7 +42,6 @@ namespace App
 
         private void MainOk_Click(object sender, EventArgs e)//확인 해서 db에 저장
         {
-
             if (checkEmployee())
             {
                 if (radioGo.Checked)
@@ -88,7 +86,7 @@ namespace App
             {
                 if (r[0].ToString() == empNum.Text)
                 {
-                    //MessageBox.Show(empNum.Text);
+                    MessageBox.Show(empNum.Text);
                     return true;
                 }
             }
@@ -143,6 +141,7 @@ namespace App
             {
                 conn.Open();
                 string query = "insert into savedata (empNum, year, month, day, Go) values("+ Int32.Parse(empNum.Text) +"," + year + "," + month + "," + day + ",'" + time + "');";
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();
