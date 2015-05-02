@@ -42,8 +42,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.tab1Birth = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -53,13 +51,20 @@
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGrid1 = new System.Windows.Forms.DataGrid();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.deleteName = new System.Windows.Forms.TextBox();
+            this.deleteNum = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -139,8 +144,6 @@
             this.tabPage1.Controls.Add(this.textBox9);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.tab1Birth);
-            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.textBox6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.textBox7);
@@ -151,7 +154,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(274, 370);
+            this.tabPage1.Size = new System.Drawing.Size(274, 380);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "정보 수정";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -175,7 +178,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(96, 96);
+            this.textBox9.Location = new System.Drawing.Point(98, 53);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(138, 21);
             this.textBox9.TabIndex = 33;
@@ -183,7 +186,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 99);
+            this.label8.Location = new System.Drawing.Point(33, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 32;
@@ -197,22 +200,6 @@
             this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 28;
             this.label9.Text = "이름";
-            // 
-            // tab1Birth
-            // 
-            this.tab1Birth.Location = new System.Drawing.Point(96, 60);
-            this.tab1Birth.Name = "tab1Birth";
-            this.tab1Birth.Size = new System.Drawing.Size(138, 21);
-            this.tab1Birth.TabIndex = 31;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 63);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "생년월일";
             // 
             // textBox6
             // 
@@ -264,7 +251,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(95, 129);
+            this.button5.Location = new System.Drawing.Point(98, 83);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 23);
             this.button5.TabIndex = 13;
@@ -291,8 +278,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.dataGrid1);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -301,24 +288,89 @@
             this.tabPage3.Text = "회원 삭제";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGrid1
+            // dataGridView1
             // 
-            this.dataGrid1.DataMember = "";
-            this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.dataGrid1.Location = new System.Drawing.Point(6, 6);
-            this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.Size = new System.Drawing.Size(262, 312);
-            this.dataGrid1.TabIndex = 0;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 244);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(73, 335);
+            this.button3.Location = new System.Drawing.Point(156, 14);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 23);
+            this.button3.Size = new System.Drawing.Size(78, 23);
             this.button3.TabIndex = 1;
-            this.button3.Text = "선택 삭제";
+            this.button3.Text = "찾기";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button6
+            // 
+            this.button6.Enabled = false;
+            this.button6.Location = new System.Drawing.Point(156, 41);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(78, 23);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "삭제";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // deleteName
+            // 
+            this.deleteName.Location = new System.Drawing.Point(53, 16);
+            this.deleteName.Name = "deleteName";
+            this.deleteName.Size = new System.Drawing.Size(97, 21);
+            this.deleteName.TabIndex = 4;
+            // 
+            // deleteNum
+            // 
+            this.deleteNum.Enabled = false;
+            this.deleteNum.Location = new System.Drawing.Point(53, 43);
+            this.deleteNum.Name = "deleteNum";
+            this.deleteNum.Size = new System.Drawing.Size(97, 21);
+            this.deleteNum.TabIndex = 5;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 17);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.TabIndex = 8;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "이름";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(6, 45);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 16);
+            this.radioButton2.TabIndex = 9;
+            this.radioButton2.Text = "번호";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.deleteName);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.deleteNum);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(18, 273);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(240, 71);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
             // 
             // 관리자창
             // 
@@ -335,7 +387,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -356,8 +410,6 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tab1Birth;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox7;
@@ -367,7 +419,13 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGrid dataGrid1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox deleteNum;
+        private System.Windows.Forms.TextBox deleteName;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

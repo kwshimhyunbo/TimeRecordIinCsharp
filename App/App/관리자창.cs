@@ -16,10 +16,10 @@ namespace App
         MySqlConnection myConnection;
         MySqlDataReader reader;
         MySqlCommand cmd;
-        DataTable data;
+        DataSet data;
         MySqlDataAdapter da;
-
-
+        DataTable sTable;
+        MySqlDataAdapter adpt;
         public 관리자창()
         {
             InitializeComponent();
@@ -37,13 +37,13 @@ namespace App
             {   
                 conn.Open();
                 string query = "select * from employee";
-                MySqlDataAdapter adpt = new MySqlDataAdapter(query, conn);
+                adpt = new MySqlDataAdapter(query, conn);
                 adpt.Fill(ds, "employee");
             }
 
             foreach (DataRow r in ds.Tables[0].Rows)
             {
-                if ((tab1name.Text == r[1].ToString()) && (tab1Birth.Text == r[2].ToString()))
+                if ((tab1name.Text == r[1].ToString()))
                 {
                     MessageBox.Show("정보확인");
                     getInfo();
@@ -70,16 +70,18 @@ namespace App
         {
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
-                conn.Open();
-                data = new DataTable();
+                /*conn.Open();
+                data = new DataSet();
                 string query = "select * from employee";
-                MySqlDataAdapter adpt = new MySqlDataAdapter(query, conn);
-                adpt.Fill(data);
-                dataGrid1.DataSource = data;
+                adpt = new MySqlDataAdapter(query, conn);
+                adpt.Fill(data,"employee");
+                sTable = data.Tables["employee"];
+                dataGridView1.DataSource = data.Tables["employee"];
+                dataGridView1.ReadOnly = true;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                conn.Close();*/
             }
 
-          
-          
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -111,7 +113,7 @@ namespace App
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DataSet mydataset = new DataSet();
+            /*DataSet mydataset = new DataSet();
             DataSet changemydataset = new DataSet();
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
@@ -121,12 +123,96 @@ namespace App
                 adpt.Fill(mydataset, "employee");
 
                 int curRow = dataGrid1.CurrentRowIndex;
-                mydataset.Tables["employee"].Rows[curRow].Delete();
+                mydataset.Tables["employee"].Rows[curRow].Delete();c
 
                 dataGrid1.DataSource = mydataset.Tables["employee"].DefaultView;	
             }
 
-          
+          */
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+             using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+
+                string query = "delete from employee where empNum ='" + dataGridView1.SelectedRows[0].Cells[1].Value.ToString() + "';";
+                
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                try
+                {
+
+
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("삭제성공");
+
+                    data = new DataSet();
+                    if (deleteName.Enabled)
+                        query = "select empName,empNum,empBirth from employee where empName='" + deleteName.Text + "';";
+                    else
+                        query = "select empName,empNum,empBirth from employee where empNum='" + deleteNum.Text + "';";
+
+                    adpt = new MySqlDataAdapter(query, conn);
+                    adpt.Fill(data, "employee");
+                    sTable = data.Tables["employee"];
+                    dataGridView1.DataSource = data.Tables["employee"];
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    conn.Close();
+
+                    
+                }
+                catch
+                {
+                    MessageBox.Show("실패");
+                }
+            
+            }
+
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            button6.Enabled = true;
+            string query;
+            using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+                data = new DataSet();
+                if (deleteName.Enabled)
+                    query = "select empName,empNum,empBirth from employee where empName='" + deleteName.Text + "';";
+                else
+                    query = "select empName,empNum,empBirth from employee where empNum='" + deleteNum.Text + "';";
+                
+                    adpt = new MySqlDataAdapter(query, conn);
+                    adpt.Fill(data, "employee");
+                    sTable = data.Tables["employee"];
+                    dataGridView1.DataSource = data.Tables["employee"];
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    conn.Close();
+            
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            deleteName.Enabled = true;
+            deleteNum.Enabled = false;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            deleteName.Enabled = false;
+            deleteNum.Enabled = true;
         }
     }
 }
