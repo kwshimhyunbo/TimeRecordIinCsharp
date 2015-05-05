@@ -44,3 +44,5 @@ C:\Users\Cp\Documents\project\App\App\obj\Debug\App.Properties.Resources.resourc
 C:\Users\Cp\Documents\project\App\App\obj\Debug\App.관리자창.resources
 C:\Users\Cp\Documents\project\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\Cp\Documents\project\App\App\obj\Debug\App.Display.resources
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.Display.resources
+C:\Users\s\Desktop\pr\App\App\obj\Debug\App.excelcheck.resources

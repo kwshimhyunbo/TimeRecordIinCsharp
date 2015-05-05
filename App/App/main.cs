@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using Excel = Microsoft.Office.Interop.Excel;
 namespace App
 {
     public partial class Form1 : Form
@@ -248,6 +248,11 @@ namespace App
         private void empNum_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new excelcheck().Show();
         }
     }
 }
