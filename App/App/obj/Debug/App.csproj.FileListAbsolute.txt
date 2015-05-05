@@ -36,3 +36,11 @@ C:\Users\s\Desktop\pr\App\App\obj\Debug\App.pdb
 C:\Users\s\Desktop\pr\App\App\obj\Debug\App.관리자창.resources
 C:\Users\hyunbo\Desktop\project\App\App\obj\Debug\App.관리자창.resources
 C:\Users\s\Desktop\pr\App\App\obj\Debug\App.check.resources
+C:\Users\Cp\Documents\project\App\App\bin\Debug\App.exe.config
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.csprojResolveAssemblyReference.cache
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.check.resources
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.Form1.resources
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.Properties.Resources.resources
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.관리자창.resources
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.csproj.GenerateResource.Cache
+C:\Users\Cp\Documents\project\App\App\obj\Debug\App.Display.resources
