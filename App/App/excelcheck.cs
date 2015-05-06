@@ -23,7 +23,7 @@ namespace App
         public void init()
         {
 
-            string connectionString = "Server=localhost;Database=workingrecord;Uid=root;Pwd=1234;";
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
             string sql = "SELECT * FROM employee";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlDataAdapter dataadapter = new MySqlDataAdapter(sql, connection);

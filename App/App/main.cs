@@ -13,7 +13,7 @@ namespace App
 {
     public partial class Form1 : Form
     {
-        private static string strConn = "Server=localhost;Database=workingrecord;Uid=root;Pwd=1234;";
+        private static string strConn = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
 
         public Form1()
         {
