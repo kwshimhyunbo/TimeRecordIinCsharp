@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace App
 {
     public partial class Display : Form
     {
+        MySqlConnection myConnection;
+        MySqlDataReader reader;
+        MySqlCommand cmd;
+
         public Display()
         {
             InitializeComponent();
