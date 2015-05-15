@@ -9,17 +9,74 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+//exelcheck에 init함수 참고..
+
 namespace App
 {
     public partial class Display : Form
     {
-        MySqlConnection myConnection;
-        MySqlDataReader reader;
-        MySqlCommand cmd;
-
         public Display()
         {
             InitializeComponent();
+            displayFunc();
         }
+
+        public void displayFunc()
+        {
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+            string sql = "SELECT * FROM savedata";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(sql, connection);
+            connection.Open();
+            DataSet ds = new DataSet();
+            dataadapter.Fill(ds, "savedata");
+            connection.Close();
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "savedata";
+            connection.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //이름을 입력하면 이름을 찾고 인덱싱 찾기.
+
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+            string query;
+            //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
+            //query = "select month,year,day,go from savedata where idx='" + textBox1.Text + "';";
+            query = "select e.empName,s.month,s.year from employee e inner join savedata s on e.empNum=s.empNum where e.empName='" + textBox1.Text + "';";
+            
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
+            connection.Open();
+            DataSet ds = new DataSet();
+            dataadapter.Fill(ds, "savedata");
+            connection.Close();
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "savedata";
+            connection.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+            string query;
+            //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
+            query = "select month,year,day,go from savedata where month='" + textBox3.Text + "';";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
+            connection.Open();
+            DataSet ds = new DataSet();
+            dataadapter.Fill(ds, "savedata");
+            connection.Close();
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "savedata";
+            connection.Close();
+
+        }
+
     }
+
+
 }
+
