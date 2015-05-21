@@ -17,7 +17,6 @@ namespace App
         private static string strConn = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
 
 
-
         public Form1()
         {
             InitializeComponent();

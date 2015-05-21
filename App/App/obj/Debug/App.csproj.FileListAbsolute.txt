@@ -52,3 +52,4 @@ C:\Users\Cp\Documents\project\App\App\bin\Debug\App.pdb
 C:\Users\Cp\Documents\project\App\App\bin\Debug\MySql.Data.Entity.EF5.dll
 C:\Users\Cp\Documents\project\App\App\obj\Debug\App.exe
 C:\Users\Cp\Documents\project\App\App\obj\Debug\App.pdb
+C:\Users\s\Desktop\pr\App\App\bin\Debug\MySql.Data.Entity.dll
