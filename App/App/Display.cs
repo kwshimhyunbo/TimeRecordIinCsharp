@@ -82,7 +82,7 @@ namespace App
             }
             query += ";";
 
-            MessageBox.Show(query);
+            //MessageBox.Show(query);
             
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
