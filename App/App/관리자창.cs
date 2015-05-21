@@ -31,28 +31,52 @@ namespace App
             this.Close();
         }
 
+    
+
         private void button5_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
+
             using (MySqlConnection conn = new MySqlConnection(strConn))
-            {   
-                conn.Open();
-                string query = "select * from employee";
-                adpt = new MySqlDataAdapter(query, conn);
-                adpt.Fill(ds, "employee");
-            }
-
-            foreach (DataRow r in ds.Tables[0].Rows)
             {
-                if ((tab1name.Text == r[1].ToString()))
-                {
-                    MessageBox.Show("정보확인");
-                    getInfo();
-                }
-            }
-         
-          
+                //string query = "select * from employee where empName ='"+nametab.Text+"';";
+                conn.Open();
 
+                string query = "select empname, empNum from employee where empName = '"+nametab.Text +"';";
+                data = new DataSet();
+                adpt = new MySqlDataAdapter(query, conn);
+                adpt.Fill(data, "employee");
+                sTable = data.Tables["employee"];
+
+                dataGridView2.DataSource = data.Tables["employee"];
+
+
+                dataGridView2.ReadOnly = true;
+
+                dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                conn.Close();
+                 
+                /* 이것은 되는 코드
+                int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+                string query = "select e.empName,s.Go,s.Back,s.late from employee e join savedata s on e.empNum=s.empNum where e.empName='" + nametab.Text + "'and s.day="+ day+";";
+
+                    data = new DataSet();
+                    adpt = new MySqlDataAdapter(query, conn);
+                    adpt.Fill(data, "savedata");
+                    sTable = data.Tables["savedata"];
+
+                    dataGridView2.DataSource = data.Tables["savedata"];
+                    
+
+                    dataGridView2.ReadOnly = true;
+
+                    dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                    conn.Close();
+                  */
+
+            }
+          
 
         }
 
@@ -85,17 +109,13 @@ namespace App
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
           
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
                 conn.Open();
+              
                 string query = "insert into employee(empNum,empName,empBirth) values(" + Int32.Parse(tab2Num.Text) + ",'" + tab2Name.Text + "'," + tab2Birth.Text+ ");";
                 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -112,30 +132,6 @@ namespace App
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            /*DataSet mydataset = new DataSet();
-            DataSet changemydataset = new DataSet();
-            using (MySqlConnection conn = new MySqlConnection(strConn))
-            {
-                conn.Open();
-                string query = "select * from employee";
-                MySqlDataAdapter adpt = new MySqlDataAdapter(query, conn);
-                adpt.Fill(mydataset, "employee");
-
-                int curRow = dataGrid1.CurrentRowIndex;
-                mydataset.Tables["employee"].Rows[curRow].Delete();c
-
-                dataGrid1.DataSource = mydataset.Tables["employee"].DefaultView;	
-            }
-
-          */
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -148,8 +144,6 @@ namespace App
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 try
                 {
-
-
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("삭제성공");
@@ -224,5 +218,62 @@ namespace App
             deleteName.Enabled = false;
             deleteNum.Enabled = true;
         }
+
+
+      
+
+        private void dataGridView2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+            using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+
+                string query = "select empNum,Go,Back,late from savedata where empNum='" + dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString() + "'and day=" + day + ";";
+                data = new DataSet();
+                adpt = new MySqlDataAdapter(query, conn);
+                adpt.Fill(data, "savedata");
+                sTable = data.Tables["savedata"];
+
+                dataGridView2.DataSource = data.Tables["savedata"];
+
+
+                dataGridView2.ReadOnly = false;
+
+                dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                conn.Close();
+
+
+
+
+            }
+        }
+
+        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+            using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+
+                string query = "Update savedata SET go = '" + dataGridView2.SelectedRows[0].Cells[1].Value.ToString() + "' where day = " + day + " and empNum = " + Int32.Parse(dataGridView2.SelectedRows[0].Cells[0].Value.ToString()) + ";";
+                string query1 = "Update savedata SET back = '" + dataGridView2.SelectedRows[0].Cells[2].Value.ToString() + "' where day = " + day + " and empNum = " + Int32.Parse(dataGridView2.SelectedRows[0].Cells[0].Value.ToString()) + ";";
+                string query2 = "Update savedata SET late = '" + dataGridView2.SelectedRows[0].Cells[3].Value.ToString() + "' where day = " + day + " and empNum = " + Int32.Parse(dataGridView2.SelectedRows[0].Cells[0].Value.ToString()) + ";";
+
+                MySqlCommand cmd;
+                
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new MySqlCommand(query1, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new MySqlCommand(query2, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+             
+            }
+        }
+
+        
     }
 }

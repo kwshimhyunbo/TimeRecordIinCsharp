@@ -77,9 +77,9 @@
             // empNum
             // 
             this.empNum.Font = new System.Drawing.Font("굴림", 15F);
-            this.empNum.Location = new System.Drawing.Point(191, 403);
+            this.empNum.Location = new System.Drawing.Point(145, 403);
             this.empNum.Name = "empNum";
-            this.empNum.Size = new System.Drawing.Size(221, 30);
+            this.empNum.Size = new System.Drawing.Size(267, 30);
             this.empNum.TabIndex = 3;
             this.empNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.empNum_KeyDown);
             // 
@@ -104,7 +104,7 @@
             // 
             this.radioGo.AutoSize = true;
             this.radioGo.Checked = true;
-            this.radioGo.Location = new System.Drawing.Point(212, 464);
+            this.radioGo.Location = new System.Drawing.Point(92, 464);
             this.radioGo.Name = "radioGo";
             this.radioGo.Size = new System.Drawing.Size(47, 16);
             this.radioGo.TabIndex = 10;
@@ -115,7 +115,7 @@
             // radioBack
             // 
             this.radioBack.AutoSize = true;
-            this.radioBack.Location = new System.Drawing.Point(267, 464);
+            this.radioBack.Location = new System.Drawing.Point(297, 464);
             this.radioBack.Name = "radioBack";
             this.radioBack.Size = new System.Drawing.Size(47, 16);
             this.radioBack.TabIndex = 11;
@@ -125,7 +125,7 @@
             // radioLate
             // 
             this.radioLate.AutoSize = true;
-            this.radioLate.Location = new System.Drawing.Point(322, 464);
+            this.radioLate.Location = new System.Drawing.Point(474, 464);
             this.radioLate.Name = "radioLate";
             this.radioLate.Size = new System.Drawing.Size(71, 16);
             this.radioLate.TabIndex = 12;
@@ -145,7 +145,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 412);
+            this.label1.Location = new System.Drawing.Point(82, 412);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 14;
@@ -154,9 +154,9 @@
             // MainOk
             // 
             this.MainOk.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F);
-            this.MainOk.Location = new System.Drawing.Point(387, 402);
+            this.MainOk.Location = new System.Drawing.Point(418, 403);
             this.MainOk.Name = "MainOk";
-            this.MainOk.Size = new System.Drawing.Size(75, 29);
+            this.MainOk.Size = new System.Drawing.Size(138, 29);
             this.MainOk.TabIndex = 5;
             this.MainOk.Text = "확인";
             this.MainOk.UseVisualStyleBackColor = true;
