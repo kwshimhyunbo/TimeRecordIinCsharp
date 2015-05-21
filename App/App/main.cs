@@ -31,7 +31,8 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new 관리자창().Show();
+            관리자창 admin = new 관리자창();
+            DialogResult mDial = admin.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -266,12 +267,16 @@ namespace App
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new excelcheck().Show();
+           excelcheck execel= new excelcheck();
+           DialogResult dResult = execel.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Display().Show();
+            Display display = new Display();
+            DialogResult dResult = display.ShowDialog();
+            //display.Show();
+            
         }
 
         private void empNum_KeyDown(object sender, KeyEventArgs e)
