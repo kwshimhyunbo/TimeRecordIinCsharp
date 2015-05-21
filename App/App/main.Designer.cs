@@ -46,9 +46,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(575, 12);
+            this.button1.Location = new System.Drawing.Point(493, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(64, 25);
             this.button1.TabIndex = 0;
             this.button1.Text = "관리자 창";
             this.button1.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(575, 98);
+            this.button2.Location = new System.Drawing.Point(493, 106);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(64, 25);
             this.button2.TabIndex = 1;
             this.button2.Text = "종료";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(575, 41);
+            this.button3.Location = new System.Drawing.Point(493, 44);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(64, 25);
             this.button3.TabIndex = 2;
             this.button3.Text = "확인창";
             this.button3.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // empNum
             // 
             this.empNum.Font = new System.Drawing.Font("굴림", 15F);
-            this.empNum.Location = new System.Drawing.Point(191, 403);
+            this.empNum.Location = new System.Drawing.Point(182, 437);
             this.empNum.Name = "empNum";
-            this.empNum.Size = new System.Drawing.Size(221, 30);
+            this.empNum.Size = new System.Drawing.Size(190, 30);
             this.empNum.TabIndex = 3;
             this.empNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.empNum_KeyDown);
             // 
@@ -93,9 +93,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::App.Properties.Resources.one1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(84, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(72, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(472, 315);
+            this.pictureBox1.Size = new System.Drawing.Size(405, 341);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -104,9 +104,9 @@
             // 
             this.radioGo.AutoSize = true;
             this.radioGo.Checked = true;
-            this.radioGo.Location = new System.Drawing.Point(212, 464);
+            this.radioGo.Location = new System.Drawing.Point(166, 503);
             this.radioGo.Name = "radioGo";
-            this.radioGo.Size = new System.Drawing.Size(47, 16);
+            this.radioGo.Size = new System.Drawing.Size(49, 17);
             this.radioGo.TabIndex = 10;
             this.radioGo.TabStop = true;
             this.radioGo.Text = "출근";
@@ -115,9 +115,9 @@
             // radioBack
             // 
             this.radioBack.AutoSize = true;
-            this.radioBack.Location = new System.Drawing.Point(267, 464);
+            this.radioBack.Location = new System.Drawing.Point(255, 503);
             this.radioBack.Name = "radioBack";
-            this.radioBack.Size = new System.Drawing.Size(47, 16);
+            this.radioBack.Size = new System.Drawing.Size(49, 17);
             this.radioBack.TabIndex = 11;
             this.radioBack.Text = "퇴근";
             this.radioBack.UseVisualStyleBackColor = true;
@@ -125,18 +125,18 @@
             // radioLate
             // 
             this.radioLate.AutoSize = true;
-            this.radioLate.Location = new System.Drawing.Point(322, 464);
+            this.radioLate.Location = new System.Drawing.Point(342, 503);
             this.radioLate.Name = "radioLate";
-            this.radioLate.Size = new System.Drawing.Size(71, 16);
+            this.radioLate.Size = new System.Drawing.Size(73, 17);
             this.radioLate.TabIndex = 12;
             this.radioLate.Text = "잔업퇴근";
             this.radioLate.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(575, 69);
+            this.button4.Location = new System.Drawing.Point(493, 75);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(64, 25);
             this.button4.TabIndex = 13;
             this.button4.Text = "회원목록";
             this.button4.UseVisualStyleBackColor = true;
@@ -145,18 +145,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 412);
+            this.label1.Location = new System.Drawing.Point(109, 446);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 12);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "사원번호:";
             // 
             // MainOk
             // 
             this.MainOk.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F);
-            this.MainOk.Location = new System.Drawing.Point(387, 402);
+            this.MainOk.Location = new System.Drawing.Point(378, 436);
             this.MainOk.Name = "MainOk";
-            this.MainOk.Size = new System.Drawing.Size(75, 29);
+            this.MainOk.Size = new System.Drawing.Size(64, 31);
             this.MainOk.TabIndex = 5;
             this.MainOk.Text = "확인";
             this.MainOk.UseVisualStyleBackColor = true;
@@ -164,10 +164,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(675, 536);
+            this.ClientSize = new System.Drawing.Size(579, 581);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.radioLate);
