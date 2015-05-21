@@ -163,9 +163,15 @@ namespace App
                     adpt = new MySqlDataAdapter(query, conn);
                     adpt.Fill(data, "employee");
                     sTable = data.Tables["employee"];
+                   
                     dataGridView1.DataSource = data.Tables["employee"];
+                    dataGridView1.Columns[0].HeaderText = "회원이름";
+                    dataGridView1.Columns[1].HeaderText = "회원번호";
+                    dataGridView1.Columns[2].HeaderText = "생년월일";
                     dataGridView1.ReadOnly = true;
+                    
                     dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                   
                     conn.Close();
 
                     
@@ -199,6 +205,9 @@ namespace App
                     dataGridView1.DataSource = data.Tables["employee"];
                     dataGridView1.ReadOnly = true;
                     dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dataGridView1.Columns[0].HeaderText = "회원이름";
+                    dataGridView1.Columns[1].HeaderText = "회원번호";
+                    dataGridView1.Columns[2].HeaderText = "생년월일";
                     conn.Close();
             
             }

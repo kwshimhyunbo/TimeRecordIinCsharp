@@ -31,11 +31,23 @@ namespace App
             connection.Open();
             dataadapter.Fill(ds, "employee");
             connection.Close();
+           
             dataGridView2.DataSource = ds;
             dataGridView2.DataMember = "employee";
+            dataGridView2.Columns[0].HeaderText = "회원이름";
+            dataGridView2.Columns[1].HeaderText = "회원번호";
+            dataGridView2.Columns[2].HeaderText = "생년월일";
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+          SaveFileDialog sd = new SaveFileDialog();
+        sd.Title = "Select Excel Sheet to Export or Create New !";
+        sd.Filter = "Excel files (*.xls)|*.xls";
+        sd.FilterIndex = 0;
+
+        if (sd.ShowDialog() == DialogResult.OK)
         {
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
@@ -57,14 +69,23 @@ namespace App
                 }
             }
 
-            xlWorkBook.SaveAs(@"C:\Users\s\Desktop\file.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
 
             releaseObject(xlWorkSheet);
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
+
         }
+
+
+
+
+
+        }
+
+
         private void releaseObject(object obj)
         {
             try
