@@ -76,7 +76,7 @@
             // 
             // empNum
             // 
-            this.empNum.Font = new System.Drawing.Font("굴림", 15F);
+            this.empNum.Font = new System.Drawing.Font("Gulim", 15F);
             this.empNum.Location = new System.Drawing.Point(191, 403);
             this.empNum.Name = "empNum";
             this.empNum.Size = new System.Drawing.Size(221, 30);
@@ -153,7 +153,7 @@
             // 
             // MainOk
             // 
-            this.MainOk.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F);
+            this.MainOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MainOk.Location = new System.Drawing.Point(387, 402);
             this.MainOk.Name = "MainOk";
             this.MainOk.Size = new System.Drawing.Size(75, 29);
