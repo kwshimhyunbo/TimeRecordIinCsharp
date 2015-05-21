@@ -44,7 +44,7 @@ namespace App
             string query;
             //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
             //query = "select month,year,day,go from savedata where idx='" + textBox1.Text + "';";
-            query = "select e.empName,s.month,s.year from employee e inner join savedata s on e.empNum=s.empNum where e.empName='" + textBox1.Text + "';";
+            query = "select e.empName,s.empNum,s.year,s.month,s.day,s.Go,s.Back,s.late from employee e join savedata s on e.empNum=s.empNum where e.empName='" + textBox1.Text + "';";
             
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
@@ -62,7 +62,7 @@ namespace App
             string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
             string query;
             //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
-            query = "select month,year,day,go from savedata where month='" + textBox3.Text + "';";
+            query = "select empNum,year,month,day,Go,Back,late from savedata where month='" + textBox3.Text + "';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
             connection.Open();
@@ -73,6 +73,61 @@ namespace App
             dataGridView1.DataMember = "savedata";
             connection.Close();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.CompareTo("") != 0)
+            {
+                string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+                string query;
+                //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
+                //query = "select empNum,year,month,day,Go,Back,late from savedata where year='" + textBox2.Text + "';";
+                query = "select e.empName, s.empNum, s.year, s.month, s.day, s.Go, s.Back, s.late from employee e join savedata s on e.empNum=s.empNum where e.empName='" + textBox1.Text + "' and s.year='" +textBox2.Text + "';";
+            
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
+                connection.Open();
+                DataSet ds = new DataSet();
+                dataadapter.Fill(ds, "savedata");
+                connection.Close();
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "savedata";
+                connection.Close();
+            }
+            else if (textBox1.Text.CompareTo("") == 0)
+            {
+                string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+                string query;
+                //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
+                query = "select empNum,year,month,day,Go,Back,late from savedata where year='" + textBox2.Text + "';";
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
+                connection.Open();
+                DataSet ds = new DataSet();
+                dataadapter.Fill(ds, "savedata");
+                connection.Close();
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "savedata";
+                connection.Close();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
+            string query;
+            //query = "select empName,empNum,empBirth from employee where empName='" + textBox3.Text + "';";
+            query = "select empNum,year,month,day,Go,Back,late from savedata where day='" + textBox4.Text + "';";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
+            connection.Open();
+            DataSet ds = new DataSet();
+            dataadapter.Fill(ds, "savedata");
+            connection.Close();
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "savedata";
+            connection.Close();
         }
 
     }
