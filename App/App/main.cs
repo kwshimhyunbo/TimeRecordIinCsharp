@@ -247,11 +247,6 @@ namespace App
             }
         }
 
-        private void empNum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             new excelcheck().Show();
@@ -261,5 +256,14 @@ namespace App
         {
             new Display().Show();
         }
+
+        private void empNum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MainOk_Click(sender, e);
+            }
+        }
+
     }
 }
