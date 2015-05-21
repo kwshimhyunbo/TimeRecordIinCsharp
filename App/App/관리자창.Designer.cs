@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.nametab = new System.Windows.Forms.TextBox();
@@ -96,7 +95,6 @@
             this.tab2Name.Name = "tab2Name";
             this.tab2Name.Size = new System.Drawing.Size(138, 21);
             this.tab2Name.TabIndex = 4;
-
             // 
             // tab2Birth
             // 
@@ -134,7 +132,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Controls.Add(this.nametab);
@@ -148,15 +145,6 @@
             this.tabPage1.Text = "정보 수정";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 343);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 12);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "label3";
             // 
             // button2
             // 
@@ -315,7 +303,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(337, 244);
             this.dataGridView1.TabIndex = 0;
-           
             // 
             // 관리자창
             // 
@@ -366,6 +353,5 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label3;
     }
 }

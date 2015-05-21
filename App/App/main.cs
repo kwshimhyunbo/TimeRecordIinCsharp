@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace App
 {
     public partial class Form1 : Form
     {
+        StreamWriter fileWrite;
 
         private static string strConn = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
 
@@ -29,7 +31,8 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new 관리자창().Show();
+            관리자창 admin = new 관리자창();
+            DialogResult mDial = admin.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -44,6 +47,7 @@ namespace App
 
         private void MainOk_Click(object sender, EventArgs e)//확인 해서 db에 저장
         {
+            //string saveText;
             if (checkEmployee())
             {
                 if (radioGo.Checked)
@@ -68,7 +72,6 @@ namespace App
             {
                 MessageBox.Show("근로자가 아닙니다");
             }
-
         }
 
         private bool checkEmployee()
@@ -136,6 +139,7 @@ namespace App
             int year = Int32.Parse(System.DateTime.Now.ToString().Substring(0, 4));
             int month = Int32.Parse(System.DateTime.Now.ToString().Substring(5, 2));
             int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+            string logText=" ";
 
             MessageBox.Show("출근 시간:"+time);
 
@@ -148,7 +152,11 @@ namespace App
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            
+
+            logText += empNum.Text +" : "+ year + month + day + time + "에 출근하셨습니다.\r\n";
+            fileWrite = new StreamWriter("log.txt", true);
+            fileWrite.Write(logText);
+            fileWrite.Close();
         }
 
         private void UpdateBack()
@@ -157,6 +165,7 @@ namespace App
             int month = Int32.Parse(System.DateTime.Now.ToString().Substring(5, 2));
             int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
             string time = System.DateTime.Now.ToString().Substring(13, 8);
+            string logText = " ";
 
             DataSet ds = new DataSet();
 
@@ -183,6 +192,10 @@ namespace App
                                 string updateQuery = "update savedata set Back='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
                                 MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                                 cmd.ExecuteNonQuery();
+                                logText += empNum.Text +" :"+ year+month+day+time+" 에 퇴근하셨습니다.\r\n";
+                                fileWrite = new StreamWriter("log.txt", true);
+                                fileWrite.Write(logText);
+                                fileWrite.Close();
                             }
                         }
                     }
@@ -217,6 +230,7 @@ namespace App
                 
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
+                    string logText = "";
                     //MessageBox.Show(r[6].ToString());
                     if (r[6].GetType().ToString() == "System.DBNull")
                     {
@@ -233,6 +247,10 @@ namespace App
                                 string updateQuery = "update savedata set late='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
                                 MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                                 cmd.ExecuteNonQuery();
+                                logText += empNum.Text + " :" + year + month + day + time + " 에 퇴근하셨습니다.\r\n";
+                                fileWrite = new StreamWriter("log.txt", true);
+                                fileWrite.Write(logText);
+                                fileWrite.Close();
                             }
                         }
                     }
@@ -249,12 +267,16 @@ namespace App
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new excelcheck().Show();
+           excelcheck execel= new excelcheck();
+           DialogResult dResult = execel.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Display().Show();
+            Display display = new Display();
+            DialogResult dResult = display.ShowDialog();
+            //display.Show();
+            
         }
 
         private void empNum_KeyDown(object sender, KeyEventArgs e)
