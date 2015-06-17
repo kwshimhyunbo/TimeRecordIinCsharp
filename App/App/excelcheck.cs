@@ -39,50 +39,65 @@ namespace App
             dataGridView2.Columns[2].HeaderText = "생년월일";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        public void toExcel(String sql,String tableName,DataGridView dgv)
         {
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.Title = "파일을 저장합니다.";
+            sd.Filter = "Excel files (*.xls)|*.xls";
+            sd.FilterIndex = 0;
 
-          SaveFileDialog sd = new SaveFileDialog();
-        sd.Title = "Select Excel Sheet to Export or Create New !";
-        sd.Filter = "Excel files (*.xls)|*.xls";
-        sd.FilterIndex = 0;
+            string connectionString = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
 
-        if (sd.ShowDialog() == DialogResult.OK)
-        {
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
 
-            Int16 i, j;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(sql, connection);
+            DataSet ds = new DataSet();
+            connection.Open();
+            dataadapter.Fill(ds, tableName);
+            connection.Close();
 
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            dgv.DataSource = ds;
+            dgv.DataMember = tableName;
 
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            for (i = 0; i <= dataGridView2.RowCount - 2; i++)
+            if (sd.ShowDialog() == DialogResult.OK)
             {
-                for (j = 0; j <= dataGridView2.ColumnCount - 1; j++)
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                Int16 i, j;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                for (i = 0; i <= dgv.RowCount - 2; i++)
                 {
-                    xlWorkSheet.Cells[i + 1, j + 1] = dataGridView2[j, i].Value.ToString();
+                    for (j = 0; j <= dgv.ColumnCount - 1; j++)
+                    {
+                        xlWorkSheet.Cells[i + 1, j + 1] = dgv[j, i].Value.ToString();
+                    }
                 }
+
+                xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+
             }
 
-            xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
 
         }
-
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * FROM employee";
+            toExcel(sql, "employee",dataGridView2);
         }
 
 

@@ -182,6 +182,7 @@ namespace App
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            
             button6.Enabled = true;
             string query;
             using (MySqlConnection conn = new MySqlConnection(strConn))
@@ -271,6 +272,31 @@ namespace App
                     cmd.ExecuteNonQuery();
                     conn.Close();
              
+            }
+        }
+
+        private void nametab_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button5_Click(sender, e);
+            }
+        }
+
+        private void tab2Num_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
+        }
+
+        private void deleteName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+              
+                button3_Click_1(sender, e);
             }
         }
 

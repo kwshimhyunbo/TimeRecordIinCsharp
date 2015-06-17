@@ -32,7 +32,10 @@ namespace App
         private void button1_Click(object sender, EventArgs e)
         {
             관리자창 admin = new 관리자창();
-            DialogResult mDial = admin.ShowDialog();
+
+            CHECKADMIN checkadmin = new CHECKADMIN();
+
+            DialogResult mDial = checkadmin.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
