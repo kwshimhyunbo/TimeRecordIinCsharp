@@ -26,6 +26,7 @@ C:\Users\s\Desktop\pr\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\s\Desktop\pr\App\App\bin\Debug\App.exe
 C:\Users\s\Desktop\pr\App\App\bin\Debug\App.pdb
 C:\Users\s\Desktop\pr\App\App\bin\Debug\MySql.Data.Entity.dll
+<<<<<<< HEAD
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.exe.config
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.exe
 C:\Users\apple\Documents\프로젝트\App\App\bin\Debug\App.pdb
@@ -47,3 +48,6 @@ C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.관리자창.resourc
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.csproj.GenerateResource.Cache
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.exe
 C:\Users\apple\Documents\프로젝트\App\App\obj\Debug\App.pdb
+=======
+C:\Users\Cp\Documents\project\App\App\bin\Debug\MySql.Data.Entity.dll
+>>>>>>> 692994727967d4e8869d37ff0130d72df4330300

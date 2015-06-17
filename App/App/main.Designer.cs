@@ -70,17 +70,14 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(64, 25);
             this.button3.TabIndex = 2;
-            this.button3.Text = "확인창";
+            this.button3.Text = "확인화면";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // empNum
             // 
-
-
-            this.empNum.Font = new System.Drawing.Font("Gulim", 15F);
+            this.empNum.Font = new System.Drawing.Font("굴림", 15F);
             this.empNum.Location = new System.Drawing.Point(191, 403);
-
             this.empNum.Name = "empNum";
             this.empNum.Size = new System.Drawing.Size(190, 30);
             this.empNum.TabIndex = 3;
@@ -107,9 +104,7 @@
             // 
             this.radioGo.AutoSize = true;
             this.radioGo.Checked = true;
-
-            this.radioGo.Location = new System.Drawing.Point(166, 503);
-
+            this.radioGo.Location = new System.Drawing.Point(156, 458);
             this.radioGo.Name = "radioGo";
             this.radioGo.Size = new System.Drawing.Size(49, 17);
             this.radioGo.TabIndex = 10;
@@ -120,9 +115,7 @@
             // radioBack
             // 
             this.radioBack.AutoSize = true;
-
-            this.radioBack.Location = new System.Drawing.Point(255, 503);
-
+            this.radioBack.Location = new System.Drawing.Point(261, 458);
             this.radioBack.Name = "radioBack";
             this.radioBack.Size = new System.Drawing.Size(49, 17);
             this.radioBack.TabIndex = 11;
@@ -132,9 +125,7 @@
             // radioLate
             // 
             this.radioLate.AutoSize = true;
-
-            this.radioLate.Location = new System.Drawing.Point(342, 503);
-
+            this.radioLate.Location = new System.Drawing.Point(351, 458);
             this.radioLate.Name = "radioLate";
             this.radioLate.Size = new System.Drawing.Size(73, 17);
             this.radioLate.TabIndex = 12;
@@ -154,9 +145,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-
-            this.label1.Location = new System.Drawing.Point(109, 446);
-
+            this.label1.Location = new System.Drawing.Point(105, 412);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 14;
@@ -164,13 +153,10 @@
             // 
             // MainOk
             // 
-
             this.MainOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MainOk.Location = new System.Drawing.Point(387, 402);
-
             this.MainOk.Name = "MainOk";
             this.MainOk.Size = new System.Drawing.Size(64, 31);
-
             this.MainOk.TabIndex = 5;
             this.MainOk.Text = "확인";
             this.MainOk.UseVisualStyleBackColor = true;
@@ -181,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(579, 581);
+            this.ClientSize = new System.Drawing.Size(579, 525);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.radioLate);
