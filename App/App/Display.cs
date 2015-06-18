@@ -19,6 +19,7 @@ using MySql.Data.MySqlClient;
 
 using Excel= Microsoft.Office.Interop.Excel;
 
+
 namespace App
 {
     public partial class Display : Form
@@ -133,41 +134,54 @@ namespace App
             connection.Open();
             string sumsum;
             MySqlCommand cmd = new MySqlCommand(query2, connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            sumsum = reader.GetString(0);  //Convert.ToString(reader);
-            //label8.Text = sumsum;
 
-            l = sumsum.Length;
+            try
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                sumsum = reader.GetString(0);  //Convert.ToString(reader);
+                //label8.Text = sumsum;
+                l = sumsum.Length;
 
-            //label10.Text =  Convert.ToString(l);
-            //int l;
-            //l = sumsum.Length;
-            if (l == 8)
-            {
-                label11.Text = Convert.ToString(0);
-                label12.Text = sumsum.Substring(0, l-6);
-                label13.Text = sumsum.Substring(l - 5, 2);
-                label14.Text = sumsum.Substring(l - 2, 2);
+                //label10.Text =  Convert.ToString(l);
+                //int l;
+                //l = sumsum.Length;
+                if (l == 8)
+                {
+                    label11.Text = Convert.ToString(0);
+                    label12.Text = sumsum.Substring(0, l - 6);
+                    label13.Text = sumsum.Substring(l - 5, 2);
+                    label14.Text = sumsum.Substring(l - 2, 2);
+                }
+                else if (l > 8)
+                {
+                    label11.Text = sumsum.Substring(0, l - 9);
+                    label12.Text = sumsum.Substring(l - 8, 2);
+                    label13.Text = sumsum.Substring(l - 5, 2);
+                    label14.Text = sumsum.Substring(l - 2, 2);
+                }
+
+                //label11.Text = label8.Text.Substring(0,7);
+                //label11.Text = Convert.ToString(l - 1);
+                reader.Close();
+                DataSet ds = new DataSet();
+                dataadapter.Fill(ds, "savedata");
+                connection.Close();
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "savedata";
+                connection.Close();
+
             }
-            else if (l > 8)
+            catch
             {
-                label11.Text = sumsum.Substring(0, l - 9);
-                label12.Text = sumsum.Substring(l - 8, 2);
-                label13.Text = sumsum.Substring(l - 5, 2);
-                label14.Text = sumsum.Substring(l - 2, 2);
+                MessageBox.Show("다드루와");
             }
+
             
-            //label11.Text = label8.Text.Substring(0,7);
-            //label11.Text = Convert.ToString(l - 1);
-            reader.Close();
+            
+           
 
-            DataSet ds = new DataSet();
-            dataadapter.Fill(ds, "savedata");
-            connection.Close();
-            dataGridView1.DataSource = ds;
-            dataGridView1.DataMember = "savedata";
-            connection.Close();
+            
             
 
         }
@@ -186,6 +200,7 @@ namespace App
             //label8.Text = "";
             displayFunc();
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -332,7 +347,8 @@ namespace App
             }
         }
 
-        
+
+
 
     }
 

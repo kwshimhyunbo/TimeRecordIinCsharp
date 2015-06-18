@@ -9,10 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+using System.IO;
 namespace App
 {
     public partial class 관리자창 : Form
     {
+        int year = Int32.Parse(System.DateTime.Now.ToString().Substring(0, 4));
+        int month = Int32.Parse(System.DateTime.Now.ToString().Substring(5, 2));
+        int day = Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+        string time = System.DateTime.Now.ToString().Substring(13, 8);
         private static string strConn = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
         MySqlConnection myConnection;
         MySqlDataReader reader;
@@ -21,6 +26,9 @@ namespace App
         MySqlDataAdapter da;
         DataTable sTable;
         MySqlDataAdapter adpt;
+        String logtext;
+        StreamWriter fileWrite;
+
         public 관리자창()
         {
             InitializeComponent();
@@ -115,21 +123,32 @@ namespace App
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
                 conn.Open();
-              
+                try
+                {
                 string query = "insert into employee(empNum,empName,empBirth) values(" + Int32.Parse(tab2Num.Text) + ",'" + tab2Name.Text + "'," + tab2Birth.Text+ ");";
                 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                try
-                {
+              
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("추가성공");
+                    writer("이름 : " + tab2Name.Text + ", 생일 : " + tab2Birth.Text + ", 사원번호 : " + tab2Num.Text + " " + " 추가됨");
                 }
                 catch
                 {
                     MessageBox.Show("실패");
+                    writer("회원추가 실패함");
                 }
             }
+        }
+
+        public void writer(String logtext)
+        {
+            logtext += "-->" + year + " " + month + " " + day + " " + time + "\r\n"; 
+            fileWrite = new StreamWriter("log.txt", true);
+            fileWrite.Write(logtext);
+            fileWrite.Close();
+            
         }
 
 
@@ -147,7 +166,7 @@ namespace App
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("삭제성공");
-
+                    writer("회원 : " + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + " " + dataGridView1.SelectedRows[0].Cells[1].Value.ToString()  + " 삭제 성공");
                     data = new DataSet();
                     if (deleteName.Enabled)
                         query = "select empName,empNum,empBirth from employee where empName='" + deleteName.Text + "';";
@@ -182,6 +201,7 @@ namespace App
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            
             button6.Enabled = true;
             string query;
             using (MySqlConnection conn = new MySqlConnection(strConn))
@@ -269,8 +289,34 @@ namespace App
                     cmd.ExecuteNonQuery();
                     cmd = new MySqlCommand(query2, conn);
                     cmd.ExecuteNonQuery();
+                    writer("회원번호 : " + dataGridView2.SelectedRows[0].Cells[0].Value.ToString()+"의 정보가 수정됨");
                     conn.Close();
              
+            }
+        }
+
+        private void nametab_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button5_Click(sender, e);
+            }
+        }
+
+        private void tab2Num_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
+        }
+
+        private void deleteName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+              
+                button3_Click_1(sender, e);
             }
         }
 
