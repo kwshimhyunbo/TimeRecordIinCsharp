@@ -93,7 +93,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 142);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(900, 230);
+            this.dataGridView1.Size = new System.Drawing.Size(849, 230);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -152,7 +152,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(732, 27);
+            this.button4.Location = new System.Drawing.Point(708, 28);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(55, 23);
             this.button4.TabIndex = 14;
@@ -179,7 +179,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(793, 28);
+            this.button1.Location = new System.Drawing.Point(769, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 23);
             this.button1.TabIndex = 19;
@@ -267,7 +267,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(732, 105);
+            this.button2.Location = new System.Drawing.Point(708, 105);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 25);
             this.button2.TabIndex = 29;
@@ -306,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 372);
+            this.ClientSize = new System.Drawing.Size(849, 372);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox5);
