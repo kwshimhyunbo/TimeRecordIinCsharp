@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
 namespace App
 {
     public partial class Display : Form
@@ -155,6 +154,11 @@ namespace App
             textBox4.Text = "";
             label8.Text = "";
             displayFunc();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
         }
 
     }
