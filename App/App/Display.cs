@@ -170,20 +170,11 @@ namespace App
                 dataGridView1.DataSource = ds;
                 dataGridView1.DataMember = "savedata";
                 connection.Close();
-
             }
             catch
             {
-                MessageBox.Show("다드루와");
+                MessageBox.Show("다시 입력하세요.");
             }
-
-            
-            
-           
-
-            
-            
-
         }
 
         private void button1_Click(object sender, EventArgs e)
