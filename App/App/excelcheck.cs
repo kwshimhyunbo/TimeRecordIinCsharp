@@ -89,10 +89,7 @@ namespace App
                 releaseObject(xlWorkSheet);
                 releaseObject(xlWorkBook);
                 releaseObject(xlApp);
-
             }
-
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -117,6 +114,11 @@ namespace App
             {
                 GC.Collect();
             }
+        }
+
+        private void excelcheck_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
