@@ -41,6 +41,10 @@ namespace App
 
         private void button2_Click(object sender, EventArgs e)
         {
+           
+            fileWrite = new StreamWriter("log.txt", true);
+            fileWrite.Write("프로그램이 종료되었습니다.\r\n");
+            fileWrite.Close();
             this.Close();
         }
 

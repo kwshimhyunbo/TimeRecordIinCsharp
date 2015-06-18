@@ -289,6 +289,7 @@ namespace App
                     cmd.ExecuteNonQuery();
                     cmd = new MySqlCommand(query2, conn);
                     cmd.ExecuteNonQuery();
+                    writer("회원번호 : " + dataGridView2.SelectedRows[0].Cells[0].Value.ToString()+"의 정보가 수정됨");
                     conn.Close();
              
             }
