@@ -22,6 +22,7 @@ namespace App
         private int currentYear;
         private int currentMonth;
         private string newTableName;
+        private int checkCount;
 
         public Form1()
         {
@@ -31,6 +32,7 @@ namespace App
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;//사진의 크기를 딱 맞는 크기로 줄여준다.
+            checkCount=1;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace App
                 newTableName = currentYear.ToString() + currentMonth.ToString();
             }
 
-            if (currentDay == 18)
+            if (currentDay == 10 && checkCount==1)
             {
                 string sql;
                 if (currentMonth == 1)
@@ -91,12 +93,15 @@ namespace App
                 {
                     saveExel(sql, pastTableName);
                 }catch(Exception ex){
-                    MessageBox.Show(sql);
-                    MessageBox.Show(pastTableName);
-                    MessageBox.Show("1121212");
+                    MessageBox.Show("Excel 설치가 되어 있지 않습니다. 설치하고 사용하세요");
+                }finally{
+                    checkCount=2;
                 }
             }
 
+            if(currentDay==9){
+                checkCount=1;
+            }
 
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
@@ -425,10 +430,6 @@ namespace App
             connection.Open();
             dataadapter.Fill(ds, tableName);
             connection.Close();
-
-         //   dgv.DataSource = ds;
-           // dgv.DataMember = tableName;
-            MessageBox.Show("3");
           
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
@@ -436,12 +437,9 @@ namespace App
             object misValue = System.Reflection.Missing.Value;
 
             xlApp = new Excel.Application();
-            MessageBox.Show("6");
             xlWorkBook = xlApp.Workbooks.Add(misValue);
-            MessageBox.Show("7");
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            MessageBox.Show("8");
             int i = 0;
             foreach (DataRow r in ds.Tables[0].Rows)
             {
@@ -451,15 +449,6 @@ namespace App
                 }
                 i++;
             }
-
-            MessageBox.Show("2");
-            /*for (i = 0; i <= ds.Tables[0].Rows; i++)
-            {
-                for (j = 0; j <= dgv.ColumnCount - 1; j++)
-                {
-                    xlWorkSheet.Cells[i + 1, j + 1] = dgv[j, i].Value.ToString();
-                }
-            }*/
 
             xlWorkBook.SaveAs(tableName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
