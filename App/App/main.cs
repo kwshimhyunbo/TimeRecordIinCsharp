@@ -31,6 +31,9 @@ namespace App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            fileWrite = new StreamWriter("log.txt", true);
+            fileWrite.Write("프로그램이 시작되었습니다.\r\n");
+            fileWrite.Close();
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;//사진의 크기를 딱 맞는 크기로 줄여준다.
             checkCount=1;
         }
@@ -72,7 +75,7 @@ namespace App
                 newTableName = currentYear.ToString() + currentMonth.ToString();
             }
 
-            if (currentDay == 10 && checkCount==1)
+            if (currentDay == 18 && checkCount==1)
             {
                 string sql;
                 if (currentMonth == 1)
@@ -445,11 +448,15 @@ namespace App
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             int i = 0;
+
+
             foreach (DataRow r in ds.Tables[0].Rows)
             {
+                
                 for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
                 {
-                    xlWorkSheet.Cells[i + 1, j + 1] = r[j].ToString();
+                    xlWorkSheet.Cells[1, j + 1] = ds.Tables[0].Columns[j].ToString();
+                    xlWorkSheet.Cells[i + 2, j + 1] = r[j].ToString();
                 }
                 i++;
             }
