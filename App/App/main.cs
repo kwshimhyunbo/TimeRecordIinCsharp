@@ -17,7 +17,10 @@ namespace App
         StreamWriter fileWrite;
 
         private static string strConn = "Server=128.134.59.89;Database=workingrecord;Uid=math;Pwd=1234;";
-
+       // private static string strConn = "Server=127.0.0.1;Database=timecard;Uid=root;Pwd=Marine;";
+        private int currentYear;
+        private int currentMonth;
+        private string newTableName;
 
         public Form1()
         {
@@ -31,11 +34,8 @@ namespace App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            관리자창 admin = new 관리자창();
-
-            CHECKADMIN checkadmin = new CHECKADMIN();
-
-            DialogResult mDial = checkadmin.ShowDialog();
+            CHECKADMIN admin = new CHECKADMIN();
+            DialogResult mDial = admin.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -50,6 +50,40 @@ namespace App
 
         private void MainOk_Click(object sender, EventArgs e)//확인 해서 db에 저장
         {
+          
+
+            currentYear = Int32.Parse(System.DateTime.Now.ToString().Substring(0, 4));
+            currentMonth = Int32.Parse(System.DateTime.Now.ToString().Substring(5, 2));
+            if (currentMonth < 10)
+            {
+                newTableName = currentYear.ToString() + "0"+currentMonth.ToString();
+            }
+            else
+            {
+                newTableName = currentYear.ToString() + currentMonth.ToString();
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "CREATE TABLE `workingrecord`.`"+newTableName+"` (`idx` INT AUTO_INCREMENT,  `empNum` INT(11) NOT NULL,  `year` INT(11) NOT NULL,  `month` INT(11) NOT NULL,  `day` INT(11) NOT NULL,   `Go` TIME ,   `Back` TIME , `late` TIME,  PRIMARY KEY (`idx`))";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                   // MessageBox.Show("create Table Error");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            deleteTable();//2년 지난 테이블 삭제
+
             //string saveText;
             if (checkEmployee())
             {
@@ -114,6 +148,7 @@ namespace App
 
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
+                //conn.Open();
                 string sql = "SELECT * from savedata";
                 MySqlDataAdapter adpt = new MySqlDataAdapter(sql, conn);
                 adpt.Fill(ds, "savedata");
@@ -149,10 +184,15 @@ namespace App
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
                 conn.Open();
-                string query = "insert into savedata (empNum, year, month, day, Go) values("+ Int32.Parse(empNum.Text) +"," + year + "," + month + "," + day + ",'" + time + "');";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
+                string saveDataQuery = "insert into savedata (empNum, year, month, day, Go) values("+ Int32.Parse(empNum.Text) +"," + year + "," + month + "," + day + ",'" + time + "');";
+                string eachTableQuery = "insert into " + "workingrecord." + newTableName.ToString() + " (empNum, year, month, day, Go) values(" + Int32.Parse(empNum.Text) + "," + year + "," + month + "," + day + ",'" + time + "');";
+                
+                MySqlCommand cmd = new MySqlCommand(saveDataQuery, conn);
                 cmd.ExecuteNonQuery();
+
+                MySqlCommand cmd2 = new MySqlCommand(eachTableQuery, conn);
+                cmd2.ExecuteNonQuery();
+
                 conn.Close();
             }
 
@@ -193,8 +233,14 @@ namespace App
                             {
                                 MessageBox.Show("퇴근 시간:" + time);
                                 string updateQuery = "update savedata set Back='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
+                                string eachTableUpdateQuery = "update " + "workingrecord." + newTableName + " set Back='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
+
                                 MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                                 cmd.ExecuteNonQuery();
+
+                                MySqlCommand cmd2 = new MySqlCommand(eachTableUpdateQuery, conn);
+                                cmd2.ExecuteNonQuery();
+
                                 logText += empNum.Text +" :"+ year+month+day+time+" 에 퇴근하셨습니다.\r\n";
                                 fileWrite = new StreamWriter("log.txt", true);
                                 fileWrite.Write(logText);
@@ -248,8 +294,14 @@ namespace App
                             {
                                 MessageBox.Show("잔업퇴근 시간:" + time);
                                 string updateQuery = "update savedata set late='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
+                                string eachTableUpdateQuery = "update " + "workingrecord." + newTableName + " set late='" + time + "' where empNum=" + empNum.Text + " && year=" + year + " && month=" + month + " && day=" + day + ";";
+                                
                                 MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
                                 cmd.ExecuteNonQuery();
+
+                                MySqlCommand cmd2 = new MySqlCommand(eachTableUpdateQuery, conn);
+                                cmd2.ExecuteNonQuery();
+
                                 logText += empNum.Text + " :" + year + month + day + time + " 에 퇴근하셨습니다.\r\n";
                                 fileWrite = new StreamWriter("log.txt", true);
                                 fileWrite.Write(logText);
@@ -287,6 +339,46 @@ namespace App
             if (e.KeyCode == Keys.Enter)
             {
                 MainOk_Click(sender, e);
+            }
+        }
+
+        private void deleteTable()//2년 지난 table 삭제
+        {
+            int pastYear;
+            int pastMonth;
+            MySqlDataReader reader;
+            using (MySqlConnection conn = new MySqlConnection(strConn))
+            {
+                conn.Open();
+                conn.ChangeDatabase("workingrecord");//table change
+                MySqlCommand cmd = new MySqlCommand("show tables", conn);
+                reader = cmd.ExecuteReader();
+                try
+                {
+                    while (reader.Read())       //반복해서 읽기
+                    {
+                        pastYear=Int32.Parse(reader.GetString(0).Substring(0,4));
+                        pastMonth=Int32.Parse(reader.GetString(0).Substring(4,2));
+
+                        if (currentYear - pastYear == 2 && currentMonth - pastMonth == 0)//2년 지났는지 check
+                        {
+                            MessageBox.Show(reader.GetString(0));
+                            string deleteTableSql = "drop table " + "workingrecord."+reader.GetString(0);
+                            MySqlCommand cmd2 = new MySqlCommand(deleteTableSql, conn);
+                            reader.Close();
+                            cmd2.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.ToString());
+                    //MessageBox.Show("delete error");
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 
