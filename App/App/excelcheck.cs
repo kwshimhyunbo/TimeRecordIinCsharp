@@ -89,10 +89,7 @@ namespace App
                 releaseObject(xlWorkSheet);
                 releaseObject(xlWorkBook);
                 releaseObject(xlApp);
-
             }
-
-
         }
         private void button1_Click(object sender, EventArgs e)
         {

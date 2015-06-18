@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace App
 {
@@ -50,10 +51,12 @@ namespace App
 
         private void MainOk_Click(object sender, EventArgs e)//확인 해서 db에 저장
         {
-          
-
+            int currentDay=Int32.Parse(System.DateTime.Now.ToString().Substring(8, 2));
+            string pastTableName;
+            
             currentYear = Int32.Parse(System.DateTime.Now.ToString().Substring(0, 4));
             currentMonth = Int32.Parse(System.DateTime.Now.ToString().Substring(5, 2));
+            
             if (currentMonth < 10)
             {
                 newTableName = currentYear.ToString() + "0"+currentMonth.ToString();
@@ -62,6 +65,38 @@ namespace App
             {
                 newTableName = currentYear.ToString() + currentMonth.ToString();
             }
+
+            if (currentDay == 18)
+            {
+                string sql;
+                if (currentMonth == 1)
+                {
+                    pastTableName = (currentYear - 1).ToString() + "12";
+                }
+                else if(currentMonth==10)
+                {
+                    pastTableName = currentYear.ToString() + "09";
+                }
+                else if (currentMonth > 10)
+                {
+                    pastTableName = currentYear.ToString() + (currentMonth - 1).ToString();
+                }
+                else
+                {
+                    pastTableName = currentYear.ToString() +"0" +(currentMonth - 1).ToString();
+                }
+                sql = "select * from " + "workingrecord." + pastTableName;
+                
+                try
+                {
+                    saveExel(sql, pastTableName);
+                }catch(Exception ex){
+                    MessageBox.Show(sql);
+                    MessageBox.Show(pastTableName);
+                    MessageBox.Show("1121212");
+                }
+            }
+
 
             using (MySqlConnection conn = new MySqlConnection(strConn))
             {
@@ -382,5 +417,76 @@ namespace App
             }
         }
 
+        private void saveExel(String sql,String tableName)//,DataGridView dgv)
+        {
+            MySqlConnection connection = new MySqlConnection(strConn);
+            MySqlDataAdapter dataadapter = new MySqlDataAdapter(sql, connection);
+            DataSet ds = new DataSet();
+            connection.Open();
+            dataadapter.Fill(ds, tableName);
+            connection.Close();
+
+         //   dgv.DataSource = ds;
+           // dgv.DataMember = tableName;
+            MessageBox.Show("3");
+          
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlApp = new Excel.Application();
+            MessageBox.Show("6");
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            MessageBox.Show("7");
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            MessageBox.Show("8");
+            int i = 0;
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
+                {
+                    xlWorkSheet.Cells[i + 1, j + 1] = r[j].ToString();
+                }
+                i++;
+            }
+
+            MessageBox.Show("2");
+            /*for (i = 0; i <= ds.Tables[0].Rows; i++)
+            {
+                for (j = 0; j <= dgv.ColumnCount - 1; j++)
+                {
+                    xlWorkSheet.Cells[i + 1, j + 1] = dgv[j, i].Value.ToString();
+                }
+            }*/
+
+            xlWorkBook.SaveAs(tableName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+            
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
     }
 }
