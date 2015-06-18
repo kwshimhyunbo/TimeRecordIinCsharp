@@ -118,5 +118,10 @@ namespace App
                 GC.Collect();
             }
         }
+
+        private void excelcheck_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
