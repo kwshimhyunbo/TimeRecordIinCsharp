@@ -4,6 +4,8 @@
  * 이름 검색 부분 검색
  * 엔터 단축키
  * 시간계산
+ * 동명이인
+ * 엑셀출력-시급계산
 */
 
 using System;
@@ -24,9 +26,13 @@ namespace App
 {
     public partial class Display : Form
     {
+        string sumsum;
+        double moneysum;
+
         public Display()
         {
             InitializeComponent();
+            label10.Text = "";
             label11.Text = "";
             label12.Text = "";
             label13.Text = "";
@@ -132,7 +138,8 @@ namespace App
             MySqlDataAdapter dataadapter = new MySqlDataAdapter(query, connection);
 
             connection.Open();
-            string sumsum;
+            
+
             MySqlCommand cmd = new MySqlCommand(query2, connection);
 
             try
@@ -161,6 +168,9 @@ namespace App
                     label14.Text = sumsum.Substring(l - 2, 2);
                 }
 
+                moneysum = (Convert.ToInt32(label11.Text) * 24.0 + Convert.ToInt32(label12.Text) + Convert.ToDouble(label13.Text)/60.0) * 6000;
+                label10.Text = Convert.ToString(moneysum);
+
                 //label11.Text = label8.Text.Substring(0,7);
                 //label11.Text = Convert.ToString(l - 1);
                 reader.Close();
@@ -175,6 +185,8 @@ namespace App
             {
                 MessageBox.Show("다시 입력하세요.");
             }
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -184,6 +196,7 @@ namespace App
             textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
+            label10.Text = "";
             label11.Text = "";
             label12.Text = "";
             label13.Text = "";
@@ -251,6 +264,7 @@ namespace App
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
 
             SaveFileDialog sd = new SaveFileDialog();
             sd.Title = "Select Excel Sheet to Export or Create New !";
@@ -282,6 +296,11 @@ namespace App
                     for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
                     {
                         xlWorkSheet.Cells[i + 2, j + 1] = dataGridView1[j, i].Value.ToString();
+
+                        if ((i == dataGridView1.RowCount - 2) && (j == dataGridView1.ColumnCount - 1))
+                        {
+                            xlWorkSheet.Cells[i + 4, j + 1] = moneysum;
+                        }
                     }
                 }
 
@@ -289,9 +308,9 @@ namespace App
                 xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
 
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlApp);
+                //releaseObject(xlWorkSheet);
+                //releaseObject(xlWorkBook);
+                //releaseObject(xlApp);
 
             }
 
